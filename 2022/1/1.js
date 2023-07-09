@@ -1,24 +1,22 @@
 const { getStringInput } = require('../utils')
 
-getStringInput().then((input) => {
-    const stringifiedCaloryArray = input
-        .split('\n\n')
-        .map((line) => line.split('\n'))
+const input = getStringInput()
 
-    const reducedCaloryArr = stringifiedCaloryArray.map((subArr) =>
-        subArr.map((val) => Number(val)).reduce((acc, curr) => acc + curr)
-    )
+const stringifiedCaloryArray = input
+    .split('\n\n')
+    .map((line) => line.split('\n'))
 
-    const topThreeCaloriesArray = reducedCaloryArr
-        .sort((a, b) => b - a)
-        .slice(0, 3)
+const reducedCaloryArr = stringifiedCaloryArray.map((subArr) =>
+    subArr.map((val) => Number(val)).reduce((acc, curr) => acc + curr)
+)
 
-    const topCalory = topThreeCaloriesArray[0]
-    const topThreeCaloriesSum = topThreeCaloriesArray.reduce(
-        (acc, curr) => acc + curr
-    )
+const topThreeCaloriesArray = reducedCaloryArr.sort((a, b) => b - a).slice(0, 3)
 
-    console.log(
-        `Top Calory: ${topCalory}\nTop Three Calories: ${topThreeCaloriesSum}`
-    )
-})
+const topCalory = topThreeCaloriesArray[0]
+const topThreeCaloriesSum = topThreeCaloriesArray.reduce(
+    (acc, curr) => acc + curr
+)
+
+console.log(
+    `Top Calory: ${topCalory}\nTop Three Calories: ${topThreeCaloriesSum}`
+)
