@@ -1,18 +1,6 @@
-const fs = require('fs')
+const { getStringInput } = require('../utils')
 
-function getInput() {
-    return new Promise((resolve, reject) => {
-        fs.readFile('./input.txt', (err, data) => {
-            if (err) {
-                reject(err)
-            } else {
-                resolve(data.toString())
-            }
-        })
-    })
-}
-
-getInput().then((input) => {
+getStringInput().then((input) => {
     const stringifiedCaloryArray = input
         .split('\n\n')
         .map((line) => line.split('\n'))
