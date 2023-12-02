@@ -1,4 +1,4 @@
-const { getStringInput } = require('../utils')
+const { getStringInput } = require('../../utils')
 
 const input = getStringInput()
 
