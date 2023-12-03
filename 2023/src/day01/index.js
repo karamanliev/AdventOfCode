@@ -1,21 +1,21 @@
-import run from "aocrunner"
+import run from 'aocrunner'
 
 const parseInput = (rawInput) => rawInput
 
 const part1 = (rawInput) => {
   const input = parseInput(rawInput)
-  const inputLines = input.split("\n")
+  const inputLines = input.split('\n')
 
   const onlyNumbersArr = inputLines.map((line) =>
     line
-      .split("")
+      .split('')
       .filter((char) => !isNaN(char))
-      .join(""),
+      .join(''),
   )
 
   const firstAndLastNumberArr = onlyNumbersArr.map((number) => {
     if (!number.length) {
-      return "0"
+      return '0'
     }
 
     if (number.length === 1) {
@@ -37,17 +37,17 @@ const part1 = (rawInput) => {
 
 const part2 = (rawInput) => {
   const input = parseInput(rawInput)
-  const inputLines = input.split("\n")
+  const inputLines = input.split('\n')
   const namedNumbers = [
-    "one",
-    "two",
-    "three",
-    "four",
-    "five",
-    "six",
-    "seven",
-    "eight",
-    "nine",
+    'one',
+    'two',
+    'three',
+    'four',
+    'five',
+    'six',
+    'seven',
+    'eight',
+    'nine',
   ]
 
   const onlyNumbersArr = inputLines.map((line) => {
@@ -68,7 +68,7 @@ const part2 = (rawInput) => {
 
     // console.log(indexes.map((obj) => obj.value).join(""))
     let numArr = []
-    const lineArr = line.split("")
+    const lineArr = line.split('')
     lineArr.forEach((char, index) => {
       const found = indexes.find((obj) => obj.idx === index)
 
@@ -83,14 +83,14 @@ const part2 = (rawInput) => {
 
     // console.log(numArr)
 
-    return numArr.filter((char) => !isNaN(char)).join("")
+    return numArr.filter((char) => !isNaN(char)).join('')
   })
 
   // console.log("🚀 ~ file: index.js:68 ~ onlyNumbersArr:", onlyNumbersArr)
 
   const firstAndLastNumberArr = onlyNumbersArr.map((number) => {
     if (!number.length) {
-      return "0"
+      return '0'
     }
 
     if (number.length === 1) {

@@ -1,10 +1,10 @@
-import run from "aocrunner"
+import run from 'aocrunner'
 
 const parseInput = (rawInput) => rawInput
 
 const part1 = (rawInput) => {
   const input = parseInput(rawInput)
-  const games = input.split("\n")
+  const games = input.split('\n')
 
   let possibleGames = []
 
@@ -13,9 +13,9 @@ const part1 = (rawInput) => {
 
     let possibleGame = true
     for (const set of sets) {
-      const red = getColorCount("red", set)
-      const blue = getColorCount("blue", set)
-      const green = getColorCount("green", set)
+      const red = getColorCount('red', set)
+      const blue = getColorCount('blue', set)
+      const green = getColorCount('green', set)
 
       if (red > 12 || green > 13 || blue > 14) {
         possibleGame = false
@@ -34,14 +34,14 @@ const part1 = (rawInput) => {
 
 const part2 = (rawInput) => {
   const input = parseInput(rawInput)
-  const games = input.split("\n")
+  const games = input.split('\n')
 
   let powerPerGame = []
 
   for (const game of games) {
-    const maxRed = getColorCount("red", game, { max: true })
-    const maxGreen = getColorCount("green", game, { max: true })
-    const maxBlue = getColorCount("blue", game, { max: true })
+    const maxRed = getColorCount('red', game, { max: true })
+    const maxGreen = getColorCount('green', game, { max: true })
+    const maxBlue = getColorCount('blue', game, { max: true })
 
     powerPerGame.push(maxRed * maxGreen * maxBlue)
   }
@@ -52,15 +52,15 @@ const part2 = (rawInput) => {
 }
 
 const getGameIdAndSets = (line) => {
-  const trimGame = line.replace("Game ", "")
-  const gameId = trimGame.substring(0, trimGame.indexOf(":"))
-  const sets = trimGame.substring(trimGame.indexOf(":") + 2).split("; ")
+  const trimGame = line.replace('Game ', '')
+  const gameId = trimGame.substring(0, trimGame.indexOf(':'))
+  const sets = trimGame.substring(trimGame.indexOf(':') + 2).split('; ')
 
   return { gameId, sets }
 }
 
 const getColorCount = (color, str, max) => {
-  const regex = new RegExp(`\\b(\\d+)\\s${color}\\b`, max && "g")
+  const regex = new RegExp(`\\b(\\d+)\\s${color}\\b`, max && 'g')
   const match = max ? [...str.matchAll(regex)] : str.match(regex)
 
   if (max) {
