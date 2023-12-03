@@ -6,17 +6,20 @@
     {
       "part1": {
         "solved": true,
-        "result": "NaN",
+        "result": "54916",
         "attempts": [],
-        "time": 0.078609
+        "time": 1.988982
       },
       "part2": {
-        "solved": false,
-        "result": null,
+        "solved": true,
+        "result": "54728",
         "attempts": [
-          "54235"
+          "54235",
+          "3729612",
+          "8063839093",
+          "54753"
         ],
-        "time": null
+        "time": 11.950007
       }
     },
     {

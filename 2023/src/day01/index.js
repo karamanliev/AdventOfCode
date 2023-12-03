@@ -14,6 +14,10 @@ const part1 = (rawInput) => {
   )
 
   const firstAndLastNumberArr = onlyNumbersArr.map((number) => {
+    if (!number.length) {
+      return "0"
+    }
+
     if (number.length === 1) {
       return number + number
     }
@@ -48,23 +52,47 @@ const part2 = (rawInput) => {
 
   const onlyNumbersArr = inputLines.map((line) => {
     // convert named numbers to values
-    // namedNumbers.forEach((number, index) => {
-    //   const value = (index + 1).toString()
-    //   line = line.replaceAll(number, value)
+    // console.log(line)
+    let indexes = []
 
-    //   console.log(line)
-    // })
-    console.log(line.split("eight").join("8"))
+    namedNumbers.forEach((number, index) => {
+      const numberValue = (index + 1).toString()
 
-    const onlyNumbers = line
-      .split("")
-      .filter((char) => !isNaN(char))
-      .join("")
+      for (let i = 0; i < line.length; i++) {
+        const idx = line.indexOf(number, i)
+        idx !== -1 && indexes.push({ idx, numberValue })
+      }
+    })
 
-    return onlyNumbers
+    indexes.sort((a, b) => a.idx - b.idx)
+
+    // console.log(indexes.map((obj) => obj.value).join(""))
+    let numArr = []
+    const lineArr = line.split("")
+    lineArr.forEach((char, index) => {
+      const found = indexes.find((obj) => obj.idx === index)
+
+      if (!isNaN(char)) {
+        numArr.push(char)
+      } else {
+        if (found) {
+          numArr.push(found.numberValue)
+        }
+      }
+    })
+
+    // console.log(numArr)
+
+    return numArr.filter((char) => !isNaN(char)).join("")
   })
 
+  // console.log("🚀 ~ file: index.js:68 ~ onlyNumbersArr:", onlyNumbersArr)
+
   const firstAndLastNumberArr = onlyNumbersArr.map((number) => {
+    if (!number.length) {
+      return "0"
+    }
+
     if (number.length === 1) {
       return number + number
     }
@@ -79,7 +107,7 @@ const part2 = (rawInput) => {
     0,
   )
 
-  return
+  return sum
 }
 
 run({
