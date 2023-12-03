@@ -1,15 +1,16 @@
-import run from 'aocrunner'
+import run from "aocrunner"
 
 const parseInput = (rawInput) => rawInput
+const getLines = (rawInput) => parseInput(rawInput).split("\n")
 
 const part1 = (rawInput) => {
-  const input = parseInput(rawInput)
+  const lines = getLines(rawInput)
 
   return
 }
 
 const part2 = (rawInput) => {
-  const input = parseInput(rawInput)
+  const lines = getLines(rawInput)
 
   return
 }
