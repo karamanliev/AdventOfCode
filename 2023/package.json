@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "start": "aocrunner day",
+    "build": "aocrunner build",
     "format": "prettier -w src",
     "update:readme": "aocrunner update:readme"
   },

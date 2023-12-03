@@ -1,15 +1,15 @@
 import run from "aocrunner"
 
-const parseInput = (rawInput) => rawInput
-const getLines = (rawInput) => parseInput(rawInput).split("\n")
+const parseInput = (rawInput: string) => rawInput
+const getLines = (rawInput: string) => parseInput(rawInput).split("\n")
 
-const part1 = (rawInput) => {
+const part1 = (rawInput: string) => {
   const lines = getLines(rawInput)
 
   return
 }
 
-const part2 = (rawInput) => {
+const part2 = (rawInput: string) => {
   const lines = getLines(rawInput)
 
   return

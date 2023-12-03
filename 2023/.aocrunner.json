@@ -1,7 +1,7 @@
 {
   "version": 1,
   "year": 2023,
-  "language": "js",
+  "language": "ts",
   "days": [
     {
       "part1": {
