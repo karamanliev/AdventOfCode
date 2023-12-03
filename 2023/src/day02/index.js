@@ -4,18 +4,15 @@ const parseInput = (rawInput) => rawInput
 
 const part1 = (rawInput) => {
   const input = parseInput(rawInput)
-  const lines = input.split("\n")
+  const games = input.split("\n")
 
   let possibleGames = []
 
-  for (const line of lines) {
-    const { gameId, sets } = getGameIdAndSets(line)
-    // console.log("🚀 ~ file: index.js:11 ~ sets:", sets)
+  for (const game of games) {
+    const { gameId, sets } = getGameIdAndSets(game)
 
     let possibleGame = true
     for (const set of sets) {
-      // const red = set.slice()
-
       const red = getColorCount("red", set)
       const blue = getColorCount("blue", set)
       const green = getColorCount("green", set)
@@ -25,7 +22,6 @@ const part1 = (rawInput) => {
       }
     }
 
-    // correct condition
     if (possibleGame) {
       possibleGames.push(Number(gameId))
     }
@@ -38,8 +34,21 @@ const part1 = (rawInput) => {
 
 const part2 = (rawInput) => {
   const input = parseInput(rawInput)
+  const games = input.split("\n")
 
-  return
+  let powerPerGame = []
+
+  for (const game of games) {
+    const maxRed = getColorCount("red", game, { max: true })
+    const maxGreen = getColorCount("green", game, { max: true })
+    const maxBlue = getColorCount("blue", game, { max: true })
+
+    powerPerGame.push(maxRed * maxGreen * maxBlue)
+  }
+
+  const sum = powerPerGame.reduce((acc, curr) => acc + curr, 0)
+
+  return sum
 }
 
 const getGameIdAndSets = (line) => {
@@ -50,13 +59,20 @@ const getGameIdAndSets = (line) => {
   return { gameId, sets }
 }
 
-const getColorCount = (color, set) => {
-  const regex = new RegExp(`\\b(\\d+)\\s${color}\\b`)
-  const match = set.match(regex)
+const getColorCount = (color, str, max) => {
+  const regex = new RegExp(`\\b(\\d+)\\s${color}\\b`, max && "g")
+  const match = max ? [...str.matchAll(regex)] : str.match(regex)
 
-  if (match) {
-    return parseInt(match[1], 10)
+  if (max) {
+    const matches = match
+    const maxColor = matches
+      .map((match) => parseInt(match[1], 10))
+      .sort((a, b) => b - a)[0]
+
+    return maxColor
   }
+
+  return match && parseInt(match[1], 10)
 }
 
 run({
